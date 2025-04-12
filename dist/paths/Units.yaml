@@ -1,6 +1,6 @@
 get:
   summary: "Get all units"
-  operationId: "getUnits"
+  operationId: "getAllUnits"
   responses:
     "200":
       description: "List of units"

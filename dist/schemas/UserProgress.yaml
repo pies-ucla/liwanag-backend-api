@@ -5,7 +5,8 @@ required:
   - progress
 properties:
   user_id:
-    type: integer
+    type: string
+    format: uuid
     format: "User ID. Acts as the partition key."
   episode_id:
     type: integer

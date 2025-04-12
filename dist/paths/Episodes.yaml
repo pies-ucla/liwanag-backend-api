@@ -1,0 +1,58 @@
+get:
+  summary: "Get all episodes"
+  operationId: "getAllEpisodes"
+  responses:
+    "200":
+      description: "List of episodes"
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "../schemas/Episode.yaml"
+    "400":
+      description: "Invalid request"
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "401":
+      description: "Unauthorized"
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+post:
+  summary: "Create a new episode"
+  operationId: "postEpisode"
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../schemas/Episode.yaml"
+  responses:
+    "201":
+      description: "Episode created successfully"
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Episode.yaml"
+    "400":
+      description: "Invalid request"
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "401":
+      description: "User is not authenticated."
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "403":
+      description: "User is not authorized. User must be an Admin."
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"

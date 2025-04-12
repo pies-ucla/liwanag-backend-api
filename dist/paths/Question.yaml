@@ -2,15 +2,115 @@ get:
   summary: "Get a question"
   operationId: "getQuestion"
   parameters:
-    - name: "questionID"
+    - name: "question_id"
       in: path
       required: true
       schema:
-        type: string
+        type: integer
   responses:
     "200":
       description: "Question details"
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/Question"
+            $ref: "../schemas/Question.yaml"
+    "400":
+      description: "Invalid request"
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "401":
+      description: "User is not authenticated."
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "404":
+      description: "No question found for the provided `question_id`."
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+patch:
+  summary: "Update a question"
+  operationId: "patchQuestion"
+  parameters:
+    - name: "question_id"
+      in: path
+      required: true
+      schema:
+        type: integer
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../schemas/Question.yaml"
+  responses:
+    "200":
+      description: "Question updated successfully"
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Question.yaml"
+    "400":
+      description: "Invalid request"
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "401":
+      description: "User is not authenticated."
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "403":
+      description: "User is not authorized. User must be an Admin."
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "404":
+      description: "No question found for the provided `question_id`."
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+delete:
+  summary: "Delete a question"
+  operationId: "deleteQuestion"
+  parameters:
+    - name: "question_id"
+      in: path
+      required: true
+      schema:
+        type: integer
+  responses:
+    "204":
+      description: "Question deleted successfully"
+    "400":
+      description: "Invalid request"
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "401":
+      description: "User is not authenticated."
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "403":
+      description: "User is not authorized. User must be an Admin."
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "404":
+      description: "No question found for the provided `question_id`."
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"

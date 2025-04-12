@@ -9,8 +9,8 @@ get:
           schema:
             type: array
             items:
-              $ref: "#/components/schemas/Word"
-    401:
+              $ref: "../schemas/Word.yaml"
+    "401":
       description: "User is not authenticated."
 post:
   summary: "Add a new vocabulary word."
@@ -20,11 +20,19 @@ post:
     content:
       application/json:
         schema:
-          $ref: "#/components/schemas/Word"
+          $ref: "../schemas/Word.yaml"
   responses:
     "201":
       description: "Vocabulary word added successfully."
-    401:
+    "401":
       description: "User is not authenticated."
-    403:
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "403":
       description: "User is not authorized. User must be an Admin."
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"

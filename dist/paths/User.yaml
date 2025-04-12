@@ -1,7 +1,7 @@
 get:
   parameters:
   - name: user_id
-    description: "The unique identifier of the User.""
+    description: "The unique identifier of the User."
     in: path
     required: true
     schema:
@@ -10,7 +10,7 @@ get:
   summary: "Read a User."
   operationId: getUserById
   responses:
-    '200':
+    "200":
       description: "The user corresponding to the provided `user_id`"
       content:
         application/json:
@@ -21,7 +21,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: '../schemas/Error.yaml'
+            $ref: "../schemas/Error.yaml"
 patch:
   parameters:
   - name: user_id
@@ -38,7 +38,7 @@ patch:
     content:
       application/json:
         schema:
-          $ref: '../schemas/User.yaml'
+          $ref: "../schemas/User.yaml"
   responses:
     "200":
       description: "User has been updated with the provided fields."
@@ -47,19 +47,19 @@ patch:
       content:
         application/json:
           schema:
-            $ref: '../schemas/Error.yaml'
+            $ref: "../schemas/Error.yaml"
     "403":
       description: "Forbidden"
       content:
         application/json:
           schema:
-            $ref: '../schemas/Error.yaml'
+            $ref: "../schemas/Error.yaml"
     "404":
       description: "No user found for the provided `user_id`."
       content:
         application/json:
           schema:
-            $ref: '../schemas/Error.yaml'
+            $ref: "../schemas/Error.yaml"
 delete:
   parameters:
   - name: user_id
@@ -72,23 +72,23 @@ delete:
   summary: "Delete a user corresponding to `user_id`."
   operationId: deleteUserById
   responses:
-    '200':
+    "200":
       description: "User has been deleted."
     "401":
       description: "Unauthorized"
       content:
         application/json:
           schema:
-            $ref: '../schemas/Error.yaml'
+            $ref: "../schemas/Error.yaml"
     "403":
       description: "Forbidden"
       content:
         application/json:
           schema:
-            $ref: '../schemas/Error.yaml'
+            $ref: "../schemas/Error.yaml"
     "404":
       description: "No user found for the provided `user_id`."
       content:
         application/json:
           schema:
-            $ref: '../schemas/Error.yaml'
+            $ref: "../schemas/Error.yaml"

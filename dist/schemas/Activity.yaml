@@ -8,7 +8,7 @@ properties:
     type: integer
     description: "Activity ID. Acts as the partition key."
   type:
-    $ref: "#/components/schemas/ActivityType"
+    $ref: "./ActivityType"
   description:
     type: string
     description: "Description of the activity."

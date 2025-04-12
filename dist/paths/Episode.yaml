@@ -2,15 +2,115 @@ get:
   summary: "Get a specific episode"
   operationId: "getEpisode"
   parameters:
-    - name: "episodeID"
+    - name: "episode_id"
       in: path
       required: true
       schema:
-        type: string
+        type: integer
   responses:
     "200":
       description: "Episode details"
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/Episode"
+            $ref: "../schemas/Episode.yaml"
+    "400":
+      description: "Invalid request"
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "401":
+      description: "Unauthorized"
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "404":
+      description: "No episode found for the provided `episode_id`."
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+patch:
+  summary: "Update a specific episode"
+  operationId: "patchEpisode"
+  parameters:
+    - name: "episode_id"
+      in: path
+      required: true
+      schema:
+        type: integer
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../schemas/Episode.yaml"
+  responses:
+    "200":
+      description: "Episode updated successfully"
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Episode.yaml"
+    "400":
+      description: "Invalid request"
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "401":
+      description: "Unauthorized"
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "403":
+      description: "Forbidden"
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "404":
+      description: "No episode found for the provided `episode_id`."
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+delete:
+  summary: "Delete a specific episode"
+  operationId: "deleteEpisode"
+  parameters:
+    - name: "episode_id"
+      in: path
+      required: true
+      schema:
+        type: integer
+  responses:
+    "204":
+      description: "Episode deleted successfully"
+    "400":
+      description: "Invalid request"
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "401":
+      description: "User is not authenticated."
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "403":
+      description: "User is not authorized. User must be an Admin."
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "404":
+      description: "No episode found for the provided `episode_id`."
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"

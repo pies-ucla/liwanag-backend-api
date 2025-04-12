@@ -5,7 +5,8 @@ required:
   - email
 properties:
   user_id:
-    type: integer
+    type: string
+    format: uuid
     description: "User ID. Acts as the partition key."
   first_name:
     type: string

@@ -1,0 +1,42 @@
+get:
+  summary: "Get all questions."
+  operationId: "getAllQuestions
+  responses:
+    "200":
+      description: "Return a list of questions."
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "../schemas/Question.yaml"
+    "401":
+      description: "User is not authenticated."
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+post:
+  summary: "Add a new question."
+  operationId: "addQuestion"
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../schemas/Question.yaml"
+  responses:
+    "201":
+      description: "Question added successfully."
+    "401":
+      description: "User is not authenticated."
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "403":
+      description: "User is not authorized. User must be an Admin."
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"

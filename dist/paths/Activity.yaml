@@ -2,15 +2,119 @@ get:
   summary: "Get an activity"
   operationId: "getActivity"
   parameters:
-    - name: "activityID"
+    - name: "activity_id"
       in: path
       required: true
       schema:
-        type: string
+        type: integer
   responses:
     "200":
       description: "Activity details"
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/Activity"
+            $ref: "../schemas/Activity"
+    "400":
+      description: "Invalid request"
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "401":
+      description: "User is not authenticated."
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "404":
+      description: "No activity found for the provided `activity_id`."
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+patch:
+  summary: "Update an activity"
+  operationId: "patchActivity"
+  parameters:
+    - name: "activity_id"
+      in: path
+      required: true
+      schema:
+        type: integer
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../schemas/Activity.yaml"
+  responses:
+    "200":
+      description: "Activity updated successfully"
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Activity.yaml"
+    "400":
+      description: "Invalid request"
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "401":
+      description: "User is not authenticated."
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "403":
+      description: "User does not have permission to update this activity."
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "404":
+      description: "No activity found for the provided `activity_id`."
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+delete:
+  summary: "Delete an activity"
+  operationId: "deleteActivity"
+  parameters:
+    - name: "activity_id"
+      in: path
+      required: true
+      schema:
+        type: integer
+  responses:
+    "200":
+      description: "Activity deleted successfully"
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Activity.yaml"
+    "400":
+      description: "Invalid request"
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "401":
+      description: "User is not authenticated."
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "403":
+      description: "User is not authorized. User must be an Admin."
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "404":
+      description: "No activity found for the provided `activity_id`."
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"

@@ -6,18 +6,74 @@ get:
       in: path
       required: true
       schema:
-        type: integer
+        type: string
+        format: uuid
   responses:
     "200":
       description: "Return vocabulary word fields as defined by schema."
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/Word"
-    401:
+            $ref: "../schemas/Word.yaml"
+    "401":
       description: "User is not authenticated."
-    404:
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "404":
       description: "No Word found corresponding to `word_id`."
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+patch:
+  summary: "Update a vocabulary word corresponding to word_id."
+  operationId: "patchVocabularyById"
+  parameters:
+    - name: "word_id"
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../schemas/Word.yaml"
+  responses:
+    "200":
+      description: "Vocabulary word with word_id {word_id} was updated successfully."
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Word.yaml"
+    "400":
+      description: "Invalid request."
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "401":
+      description: "User is not authenticated."
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "403":
+      description: "User is not authorized. User must be an Admin."
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "404":
+      description: "No Word found corresponding to `word_id`."
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
 delete:
   summary: "Delete the vocabulary word corresponding to word_id."
   operationId: "deleteVocabulary"
@@ -26,13 +82,26 @@ delete:
       in: path
       required: true
       schema:
-        type: integer
+        type: string
+        format: uuid
   responses:
     "204":
       description: "Vocabulary word with word_id {word_id} was deleted successfully."
-    401:
+    "401":
       description: "User is not authenticated."
-    403:
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "403":
       description: "User is not authorized. User must be an Admin."
-    404:
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "404":
       description: "No Word found corresponding to `word_id`."
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
