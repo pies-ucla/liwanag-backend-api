@@ -13,7 +13,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: "../schemas/Activity"
+            $ref: "../schemas/Activity.yaml"
     "400":
       description: "Invalid request"
       content:
