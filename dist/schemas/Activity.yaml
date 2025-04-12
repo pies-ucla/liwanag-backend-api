@@ -8,7 +8,7 @@ properties:
     type: integer
     description: "Activity ID. Acts as the partition key."
   type:
-    $ref: "./ActivityType"
+    $ref: "./ActivityType.yaml"
   description:
     type: string
     description: "Description of the activity."
