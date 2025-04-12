@@ -1,0 +1,16 @@
+get:
+  summary: "Get a question"
+  operationId: "getQuestion"
+  parameters:
+    - name: "questionID"
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    "200":
+      description: "Question details"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Question"

@@ -1,0 +1,21 @@
+User: # DynamoDB table
+  $ref: 'User.yaml'
+UserProgress: # DynamoDB table
+  $ref: 'UserProgress.yaml'
+
+Unit: # DynamoDB table
+  $ref: 'Unit.yaml'
+Episode: # DynamoDB table
+  $ref: 'Episode.yaml'
+Activity: # DynamoDB table
+  $ref: 'Activity.yaml'
+Question: # DynamoDB table
+  $ref: 'Question.yaml'
+
+
+Word: # DynamoDB table
+  $ref: 'Word.yaml'
+Achievement:
+  $ref: 'Achievement.yaml'
+Error:
+  $ref: 'Error.yaml'

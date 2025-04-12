@@ -1,0 +1,28 @@
+# api.example.com/users
+get: # GET api.example.com/users
+  summary: Read all users of Liwanag.
+  operationId: getAllUsers
+  responses:
+    '200':
+      description: List corresponding to all Liwanag users.
+      content:
+        application/json:
+          schema:
+            type: list
+            $ref: '#/components/schemas/User'
+    401: # HTTP error code 401 indicates user is not authenticated
+      description: "User is not authenticated."
+    403: # HTTP error code 403 indicates user is not authorized
+      description: "User is not authorized. User must be an Admin."
+post: # POST api.example.com/users
+  summary: Register a User.
+  operationId: postUser
+  requestBody:
+    description: Required fields to create an User.
+    content:
+      application/json:
+        schema:
+          $ref: '#/components/schemas/User'
+  responses:
+    '201':
+      description: Post has been created. No response body provided.

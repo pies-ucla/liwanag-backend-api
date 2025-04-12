@@ -1,0 +1,36 @@
+type: object
+required:
+  - first_name
+  - last_name
+  - email
+properties:
+  user_id:
+    type: integer
+    description: "User ID. Acts as the partition key."
+  first_name:
+    type: string
+  last_name:
+    type: string
+  email:
+    type: string
+  avatar:
+    type: string
+    description: "URL of profile picture."
+  achievements:
+    type: array
+    description: "Achievements that the user has earned."
+    items:
+      type: object
+      properties:
+        achievement:
+          $ref: "#/components/schemas/Achievement"
+        created_time:
+          type: string
+          format: date-time
+          description: "Timestamp when the achievement was earned"
+  created_time:
+    type: string
+    format: date-time
+  updated_time:
+    type: string
+    format: date-time

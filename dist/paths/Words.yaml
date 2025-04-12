@@ -1,0 +1,30 @@
+get:
+  summary: "Get all vocabulary words."
+  operationId: "getAllVocabulary"
+  responses:
+    "200":
+      description: "Return a list of vocabulary words."
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "#/components/schemas/Word"
+    401:
+      description: "User is not authenticated."
+post:
+  summary: "Add a new vocabulary word."
+  operationId: "addVocabulary"
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "#/components/schemas/Word"
+  responses:
+    "201":
+      description: "Vocabulary word added successfully."
+    401:
+      description: "User is not authenticated."
+    403:
+      description: "User is not authorized. User must be an Admin."

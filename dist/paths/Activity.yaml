@@ -1,0 +1,16 @@
+get:
+  summary: "Get an activity"
+  operationId: "getActivity"
+  parameters:
+    - name: "activityID"
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    "200":
+      description: "Activity details"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Activity"
