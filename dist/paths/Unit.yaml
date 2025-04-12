@@ -1,16 +1,119 @@
 get:
   summary: "Get a specific unit"
-  operationId: "getUnit"
+  operationId: "getUnitById"
   parameters:
-    - name: "unitID"
+    - name: "unit_id"
       in: path
       required: true
       schema:
         type: string
+        format: uuid
   responses:
     "200":
       description: "Unit details"
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/Unit"
+            $ref: "../schemas/Unit.yaml"
+    "400":
+      description: "Invalid request"
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "401":
+      description: "Unauthorized"
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "404":
+      description: "No unit found for the provided `unit_id`."
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+patch:
+  summary: "Update a specific unit"
+  operationId: "patchUnitById"
+  parameters:
+    - name: "unit_id"
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../schemas/Unit.yaml"
+  responses:
+    "200":
+      description: "Unit updated successfully"
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Unit.yaml"
+    "400":
+      description: "Invalid request"
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "401":
+      description: "Unauthorized"
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "403":
+      description: "Forbidden; user must be an admin"
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "404":
+      description: "No unit found for the provided `unit_id`."
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+delete:
+  summary: "Delete a specific unit"
+  operationId: "deleteUnitById"
+  parameters:
+    - name: "unit_id"
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  responses:
+    "204":
+      description: "Unit deleted successfully"
+    "400":
+      description: "Invalid request"
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "401":
+      description: "Unauthorized"
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "403":
+      description: "Forbidden; user must be an admin"
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"
+    "404":
+      description: "No unit found for the provided `unit_id`."
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/Error.yaml"

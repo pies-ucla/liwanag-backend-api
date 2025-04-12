@@ -1,7 +1,7 @@
 # api.example.com/users
 get: # GET api.example.com/users
   summary: Read all users of Liwanag.
-  operationId: getAllUsers
+  operationId: getUsers
   responses:
     '200':
       description: List corresponding to all Liwanag users.

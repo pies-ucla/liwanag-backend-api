@@ -1,71 +1,94 @@
 get:
   parameters:
   - name: user_id
-    description: The unique identifier of the User.
+    description: "The unique identifier of the User.""
     in: path
     required: true
     schema:
-      $ref: '#/components/schemas/User'
-  summary: Read a User.
+      type: string
+      format: uuid
+  summary: "Read a User."
   operationId: getUserById
   responses:
     '200':
-      description: The user corresponding to the provided `user_id`
+      description: "The user corresponding to the provided `user_id`"
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/User'
-    404:
-      description: No user found for the provided `user_id`.
+            $ref: "../schemas/User.yaml"
+    "404":
+      description: "No user found for the provided `user_id`."
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/Error.yaml'
 patch:
   parameters:
   - name: user_id
-    description: The unique identifier of the user.
+    description: "The unique identifier of the user."
     in: path
     required: true
     schema:
-      $ref: '../schemas/index.yaml#/User'
-  summary: Update a user corresponding to `userId` based on the fields provided.
+      type: string
+      format: uuid
+  summary: "Update a user corresponding to `user_id` based on the fields provided."
   operationId: patchUserById
   requestBody:
-    description: User fields to update.
+    description: "User fields to update."
     content:
       application/json:
         schema:
-          $ref: '../schemas/index.yaml#/User'
+          $ref: '../schemas/User.yaml'
   responses:
-    '200':
-      description: User has been updated with the provided fields.
-    401:
-      description: User is not authenticated via OAuth2 in the web app.
-    403:
-      description: User is not authorized via OAuth2 in the web app. User must be a Board Member.
-    500:
-      description: Unexpected error
+    "200":
+      description: "User has been updated with the provided fields."
+    "401":
+      description: "Unauthorized"
       content:
         application/json:
           schema:
-            $ref: '../schemas/index.yaml#/Error'
+            $ref: '../schemas/Error.yaml'
+    "403":
+      description: "Forbidden"
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/Error.yaml'
+    "404":
+      description: "No user found for the provided `user_id`."
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/Error.yaml'
 delete:
   parameters:
-  - name: userId
-    description: The unique identifier of the user.
+  - name: user_id
+    description: "The unique identifier of the user."
     in: path
     required: true
     schema:
-      $ref: '../schemas/index.yaml#/UserId'
-  summary: Delete a user corresponding to `userId`.
+      type: string
+      format: uuid
+  summary: "Delete a user corresponding to `user_id`."
   operationId: deleteUserById
   responses:
     '200':
-      description: User has been deleted.
-    401:
-      description: User is not authenticated via OAuth2 in the web app.
-    403:
-      description: User is not authorized via OAuth2 in the web app. User must be a Board Member.
-    500:
-      description: Unexpected error
+      description: "User has been deleted."
+    "401":
+      description: "Unauthorized"
       content:
         application/json:
           schema:
-            $ref: '../schemas/index.yaml#/Error'
+            $ref: '../schemas/Error.yaml'
+    "403":
+      description: "Forbidden"
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/Error.yaml'
+    "404":
+      description: "No user found for the provided `user_id`."
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/Error.yaml'

@@ -19,7 +19,7 @@ properties:
     type: array
     description: "List of episodes in this unit. Each array item contains the episode_id, not the Episode itself."
     items:
-      $ref: "#/components/schemas/Episode"
+      $ref: "./Episode.yaml"
   created_time:
     type: string
     format: date-time

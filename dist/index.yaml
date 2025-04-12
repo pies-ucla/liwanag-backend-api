@@ -32,4 +32,23 @@ paths:    # api.example.com
 
 components:
   schemas:
-    $ref: 'schemas/index.yaml'
+    User: # DynamoDB table
+      $ref: 'schemas/User.yaml'
+    UserProgress: # DynamoDB table
+      $ref: 'schemas/UserProgress.yaml'
+
+    Unit: # DynamoDB table
+      $ref: 'schemas/Unit.yaml'
+    Episode: # DynamoDB table
+      $ref: 'schemas/Episode.yaml'
+    Activity: # DynamoDB table
+      $ref: 'schemas/Activity.yaml'
+    Question: # DynamoDB table
+      $ref: 'schemas/Question.yaml'
+
+    Word: # DynamoDB table
+      $ref: 'schemas/Word.yaml'
+    Achievement:
+      $ref: 'schemas/Achievement.yaml'
+    Error:
+      $ref: 'schemas/Error.yaml'

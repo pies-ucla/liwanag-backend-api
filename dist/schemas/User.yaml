@@ -23,7 +23,7 @@ properties:
       type: object
       properties:
         achievement:
-          $ref: "#/components/schemas/Achievement"
+          $ref: "./Achievement.yaml"
         created_time:
           type: string
           format: date-time

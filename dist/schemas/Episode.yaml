@@ -20,12 +20,12 @@ properties:
     type: array
     description: "Key vocabulary/words covered in this episode. Each array item contains the word_id, not the Word itself."
     items:
-      $ref: "#/components/schemas/Word"
+      $ref: "./Word.yaml"
   activities:
     type: array
     description: "List of activities in this episode. Each array item contains the activity_id, not the Activity itself."
     items:
-      $ref: "#/components/schemas/Activity"
+      $ref: "./Activity.yaml"
   created_time:
     type: string
     format: date-time
