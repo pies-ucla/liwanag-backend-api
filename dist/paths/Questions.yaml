@@ -1,6 +1,6 @@
 get:
   summary: "Get all questions."
-  operationId: "getAllQuestions
+  operationId: "getAllQuestions"
   responses:
     "200":
       description: "Return a list of questions."
@@ -18,7 +18,7 @@ get:
             $ref: "../schemas/Error.yaml"
 post:
   summary: "Add a new question."
-  operationId: "addQuestion"
+  operationId: "postQuestion"
   requestBody:
     required: true
     content:

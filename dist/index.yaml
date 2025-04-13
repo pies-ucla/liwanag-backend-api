@@ -17,17 +17,17 @@ paths:    # api.example.com
     $ref: 'paths/Units.yaml'
   /units/{unit_id}:
     $ref: 'paths/Unit.yaml'
-  /units/{unit_id}/episodes:
+  /episodes:
     $ref: 'paths/Episodes.yaml'
-  /units/{unit_id}/episodes/{episode_id}:
+  /episodes/{episode_id}:
     $ref: 'paths/Episode.yaml'
-  /units/{unit_id}/episodes/{episode_id}/activities:
+  /activities:
     $ref: 'paths/Activities.yaml'
-  /units/{unit_id}/episodes/{episode_id}/activities/{activity_id}:
+  /activities/{activity_id}:
     $ref: 'paths/Activity.yaml'
-  /units/{unit_id}/episodes/{episode_id}/activities/{activity_id}/questions:
+  /questions:
     $ref: 'paths/Questions.yaml'
-  /units/{unit_id}/episodes/{episode_id}/activities/{activity_id}/questions/{question_id}:
+  /questions/{question_id}:
     $ref: 'paths/Question.yaml'
 
 components:
