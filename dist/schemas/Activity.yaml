@@ -5,7 +5,8 @@ required:
   - lesson_questions
 properties:
   activity_id:
-    type: integer
+    type: string
+    format: uuid
     description: "Activity ID. Acts as the partition key."
   type:
     $ref: "./ActivityType.yaml"

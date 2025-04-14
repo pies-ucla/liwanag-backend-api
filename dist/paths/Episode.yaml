@@ -6,7 +6,8 @@ get:
       in: path
       required: true
       schema:
-        type: integer
+        type: string
+        format: uuid
   responses:
     "200":
       description: "Episode details"
@@ -40,7 +41,8 @@ patch:
       in: path
       required: true
       schema:
-        type: integer
+        type: string
+        format: uuid
   requestBody:
     required: true
     content:
@@ -86,7 +88,8 @@ delete:
       in: path
       required: true
       schema:
-        type: integer
+        type: string
+        format: uuid
   responses:
     "204":
       description: "Episode deleted successfully"

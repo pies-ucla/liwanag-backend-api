@@ -7,10 +7,11 @@ properties:
   user_id:
     type: string
     format: uuid
-    format: "User ID. Acts as the partition key."
+    description: "User ID. Acts as the partition key."
   episode_id:
-    type: integer
-    format: "Episode ID. Acts as the sort key."
+    type: string
+    format: uuid
+    description: "Episode ID. Acts as the sort key."
   progress:
     type: integer
     format: int32
@@ -27,7 +28,7 @@ properties:
     description: "Additional information about the user's lesson progress."
     properties:
       last_attempted_question:
-        type: integer
-        format: int32
+        type: string
+        format: format
         description: "The last question the user attempted"
         example: 12
