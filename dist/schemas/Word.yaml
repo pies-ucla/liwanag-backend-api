@@ -13,18 +13,18 @@ properties:
     description: "The word itself"
   forms:
     type: array
+    description: "The different forms of the word. For example, 'run', 'running', 'ran'."
     items:
       type: string
-      description: "The different forms of the word. For example, 'run', 'running', 'ran'."
   part_of_speech:
     type: string
     description: "The grammatical category of a word. For affixes, this describes the new word formed by the affix."
     enum: ["noun", "pronoun", "adjective", "verb", "adverb", "conjunction", "preposition", "number","particle", "interjection", "determiner"]
   categories:
     type: array
+    description: "The category of the word. For example, 'color', 'animal', etc. For affixes, this describes the parts of speech that the affix can be attached to."
     items:
       type: string
-      description: "The category of the word. For example, 'color', 'animal', etc. For affixes, this describes the parts of speech that the affix can be attached to."
   definition:
     type: string
     description: "The meaning of the word."
@@ -46,9 +46,9 @@ properties:
     description: "The audio file of the word. For example, 'word.mp3'."
   sentences:
     type: array
+    description: "ID of example sentences using the word."
     items:
       type: string
-      description: "Example sentences using the word."
   created_time:
     type: string
     format: date-time
