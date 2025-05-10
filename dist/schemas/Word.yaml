@@ -1,18 +1,54 @@
 type: object
 required:
   - word
+  - word_id
   - part_of_speech
+  - definition
 properties:
   word_id:
     type: string
-    format: uuid
-    description: "Vocab ID. Acts as the partition key."
+    description: "Vocab ID. Acts as the partition key. Differentiates words with multiple definitions."
   word:
     type: string
+    description: "The word itself"
+  forms:
+    type: array
+    items:
+      type: string
+      description: "The different forms of the word. For example, 'run', 'running', 'ran'."
   part_of_speech:
     type: string
-    description: "The grammatical category of a word."
-    enum: ["noun", "verb", "adjective", "adverb", "pronoun", "preposition", "conjunction", "interjection"]
+    description: "The grammatical category of a word. For affixes, this describes the new word formed by the affix."
+    enum: ["noun", "pronoun", "adjective", "verb", "adverb", "conjunction", "preposition", "number","particle", "interjection", "determiner"]
+  categories:
+    type: array
+    items:
+      type: string
+      description: "The category of the word. For example, 'color', 'animal', etc. For affixes, this describes the parts of speech that the affix can be attached to."
+  definition:
+    type: string
+    description: "The meaning of the word."
+  synonyms:
+    type: array
+    items:
+      type: string
+      description: "Synonyms of the word."
+  e_synonyms:
+    type: array
+    items:
+      type: string
+      description: "English synonyms of the word."
+  episode:
+    type: string
+    description: "The episode in which the word is used. For example, 'Episode 1', 'Episode 2', etc."
+  pronunciation:
+    type: string
+    description: "The audio file of the word. For example, 'word.mp3'."
+  sentences:
+    type: array
+    items:
+      type: string
+      description: "Example sentences using the word."
   created_time:
     type: string
     format: date-time
